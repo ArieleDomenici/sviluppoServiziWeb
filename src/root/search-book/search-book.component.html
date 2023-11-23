@@ -1,4 +1,4 @@
 <p>
 search-book works!
 </p>
-<input type="text" [(ngModel)]="favoriteColor"/>
+<input type="text" [(ngModel)]="favoriteColor" (keyup)="searchBook(favoriteColor)"/>

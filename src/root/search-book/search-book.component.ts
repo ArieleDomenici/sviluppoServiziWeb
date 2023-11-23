@@ -14,7 +14,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class SearchBookComponent implements OnInit {
   favoriteColor = '';
-
+  searchBook(bookName : string){
+    console.log(bookName);
+  }
   constructor() { }
 
   ngOnInit() {
