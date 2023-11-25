@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { FoundBookComponent } from './found-book/found-book.component';
+
 
 @Component({
   selector: 'app-search-book',
@@ -9,11 +11,12 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./search-book.component.css'],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    FoundBookComponent
   ],
 })
 export class SearchBookComponent implements OnInit {
-  favoriteColor = '';
+  inputedBook = '';
   searchBook(bookName : string){
     console.log(bookName);
   }
