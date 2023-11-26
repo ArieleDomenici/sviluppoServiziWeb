@@ -1,4 +1,4 @@
 <p>
 add-book works!
 </p>
-<input type="text" [(ngModel)]="inputedBook" (keyup)="searchBook(inputedBook)"/>
+<input type="text" [(ngModel)]="inputedBook" (keyup.enter)="searchBook(inputedBook)"/>
