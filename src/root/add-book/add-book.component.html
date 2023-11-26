@@ -1,8 +1,10 @@
 <p>
 add-book works!
 </p>
-<input type="text" [(ngModel)]="inputedPosition" (keyup.enter)="searchBook(inputedPosition)"/>
+<input type="text" [(ngModel)]="inputedPosition"/>
 <br>
-<input type="text" [(ngModel)]="inputedTitle" (keyup.enter)="searchBook(inputedTitle)"/>
+<input type="text" [(ngModel)]="inputedTitle"/>
 <br>
-<input type="text" [(ngModel)]="inputedAuthor" (keyup.enter)="searchBook(inputedAuthor)"/>
+<input type="text" [(ngModel)]="inputedAuthor"/>
+<br>
+<button type="submit" (click)="onSubmit(inputedPosition,inputedTitle,inputedAuthor)">Inserisci</button>

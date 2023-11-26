@@ -16,8 +16,9 @@ export class AddBookComponent implements OnInit {
   inputedPosition = '';
   inputedTitle = '';
   inputedAuthor = '';
-  searchBook(bookInfo : string){
-    console.log(bookInfo);
+
+  onSubmit(position: string, title : string, author : string){
+    console.log(position + title + author);
   }
   constructor() { }
 
