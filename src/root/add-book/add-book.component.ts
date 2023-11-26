@@ -13,9 +13,11 @@ import { CommonModule } from '@angular/common';
   ],
 })
 export class AddBookComponent implements OnInit {
-  inputedBook = '';
-  searchBook(bookName : string){
-    console.log(bookName);
+  inputedPosition = '';
+  inputedTitle = '';
+  inputedAuthor = '';
+  searchBook(bookInfo : string){
+    console.log(bookInfo);
   }
   constructor() { }
 
