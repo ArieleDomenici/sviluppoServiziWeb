@@ -12,6 +12,20 @@ import { AddBookComponent } from './add-book/add-book.component';
 })
 export class RootComponent implements OnInit {
   title: string = 'Angular ' + VERSION.major;
+  showRicerca = false;
+  showInserisci = false;
+  onRicercaPressed(){
+    this.showRicerca = true;
+  }
+  pressRicercaEsci(){
+    this.showRicerca = false;
+  }
+  onInserisciPressed(){
+    this.showInserisci = true;
+  }
+  pressInserisciEsci(){
+    this.showInserisci = false;
+  }
   constructor() { }
 
   ngOnInit() {
