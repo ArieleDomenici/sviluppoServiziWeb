@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Observable, Subscriber } from 'rxjs';
+import { Book } from '../book';
+
 
 @Component({
   selector: 'app-add-book',
@@ -16,9 +18,7 @@ export class AddBookComponent implements OnInit {
   inputedAuthor = '';
 
   observable = new Observable((subscriber) => {
-    subscriber.next(1);
-    subscriber.next(2);
-    subscriber.next(3);
+    subscriber.next(new Book(this.inputedPosition, this.inputedAuthor, this.inputedTitle, ''));
     setTimeout(() => {
       subscriber.next(4);
       subscriber.complete();
