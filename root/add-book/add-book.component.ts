@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Observable, Subscriber } from 'rxjs';
 import { Book } from '../book';
+import { ArchiveAccessService } from '../archive-access.service';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class AddBookComponent implements OnInit {
   onSubmit(position: string, title: string, author: string) {
     console.log(position + title + author);
   }
-  constructor() {}
+  constructor(archiveAccessService: ArchiveAccessService) {}
 
   ngOnInit() {}
 }
