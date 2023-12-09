@@ -18,22 +18,22 @@ export class AddBookComponent implements OnInit {
   inputedTitle = '';
   inputedAuthor = '';
 
-  observable = new Observable((subscriber) => {
+/*  observable = new Observable((subscriber) => {
     subscriber.next(new Book(this.inputedPosition, this.inputedAuthor, this.inputedTitle, ''));
     setTimeout(() => {
       subscriber.next(4);
       subscriber.complete();
     }, 1000);
-  });
+  });*/
 
   onClick(){
-    this.observable.subscribe(value => console.log(value));
+    this.archiveAccessService.postarchive(this.inputedPosition,this.inputedAuthor,this.inputedTitle);
   }
 
   onSubmit(position: string, title: string, author: string) {
     console.log(position + title + author);
   }
-  constructor(archiveAccessService: ArchiveAccessService) {}
+  constructor(private archiveAccessService: ArchiveAccessService) {}
 
   ngOnInit() {}
 }
