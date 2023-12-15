@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FoundBookComponent } from './found-book/found-book.component';
+import { ArchiveAccessService } from '../archive-access.service';
 
 
 @Component({
@@ -14,14 +15,18 @@ import { FoundBookComponent } from './found-book/found-book.component';
     FormsModule,
     FoundBookComponent
   ],
+  providers: [ArchiveAccessService],
+
 })
 export class SearchBookComponent implements OnInit {
   inputedBook = '';
   searchBook(bookName : string){
+    this.aas.getarchive();
     console.log(bookName);
+    
   }
-  constructor() { }
-
+  constructor(private aas: ArchiveAccessService) { }
+  
   ngOnInit() {
   }
 }
