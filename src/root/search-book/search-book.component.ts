@@ -16,17 +16,18 @@ import { Book } from '../book';
     FormsModule,
     FoundBookComponent
   ],
-  providers: [ArchiveAccessService],
+  //sembra che anche senza providers vada uguale quindi a che serve?
+  //providers: [ArchiveAccessService],
 
 })
 export class SearchBookComponent implements OnInit {
   inputedBook: string = '';
-  receivedArchive : Array<Book> = [];
+  receivedArchive : string = "";
   searchBook(bookName : string){
     console.log(this.receivedArchive)
     this.aas.sequence.subscribe({
       next(x) {
-        console.log('got value ' + x);
+        console.log(x);
       },
       error(err) {
         console.error('something wrong occurred: ' + err);

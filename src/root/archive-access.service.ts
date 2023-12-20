@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Book } from './book';
 import { Observable, Subscriber, Observer } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -13,10 +14,10 @@ export class ArchiveAccessService {
   ]
   constructor() { }
 
-  sequenceSubscriber(observer: Observer<number>) {
+  sequenceSubscriber(observer: Observer<string>) {
     // synchronously deliver 1, 2, and 3, then completes
     //observer.next(this.books);
-    observer.next(1);
+    observer.next("refsfr");
     observer.complete();
     // Return the unsubscribe function.
     // This one doesn't do anything
