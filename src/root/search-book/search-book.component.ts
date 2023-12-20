@@ -21,8 +21,12 @@ import { Book } from '../book';
 
 })
 export class SearchBookComponent implements OnInit {
-  inputedBook: string = '';
+  inputedBook: string = "";
   receivedArchive : string = "";
+  getString(): void {
+    this.aas.getString().subscribe(x => this.receivedArchive = x);
+    console.log(this.receivedArchive);
+  }
   searchBook(bookName : string){
     console.log(this.receivedArchive)
     this.aas.sequence.subscribe({

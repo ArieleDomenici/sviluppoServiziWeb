@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Book } from './book';
-import { Observable, Subscriber, Observer } from 'rxjs';
+import { Observable, Subscriber, Observer, of } from 'rxjs';
 
 
 @Injectable({
@@ -13,7 +13,10 @@ export class ArchiveAccessService {
     new Book('3', 'Il Principe', 'Nicolò Machiavelli', ''),
   ]
   constructor() { }
-
+  getString():Observable<string>{
+    const testStr = of("testString");
+    return testStr;
+  }
   sequenceSubscriber(observer: Observer<string>) {
     // synchronously deliver 1, 2, and 3, then completes
     //observer.next(this.books);

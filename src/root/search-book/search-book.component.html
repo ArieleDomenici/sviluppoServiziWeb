@@ -1,6 +1,6 @@
 
 <div>
   <p>search-book works!</p>
-  <input type="text" [(ngModel)]="inputedBook" (keyup)="searchBook(inputedBook)"/>
+  <input type="text" [(ngModel)]="inputedBook" (keyup)="getString()"/>
   <app-found-book [inputedBook] = "inputedBook"></app-found-book><br>
 </div>
