@@ -14,22 +14,6 @@ export class ArchiveAccessService {
     new Book('3', 'Il Principe', 'Nicolò Machiavelli', ''),
   ]
   constructor() { }
-  getString():Observable<string>{
-    const testStr = of("testString");
-    return testStr;
-  }
-  sequenceSubscriber(observer: Observer<string>) {
-    // synchronously deliver 1, 2, and 3, then completes
-    //observer.next(this.books);
-    observer.next("refsfr");
-    observer.complete();
-    // Return the unsubscribe function.
-    // This one doesn't do anything
-    // because values are delivered synchronously
-    // and there is nothing to clean up.
-    return {unsubscribe() {}};  
-  }
-  sequence = new Observable(this.sequenceSubscriber);
   //questo dovrà essere il metodo per andare a prendere l'array sul server
   //dovrebbe restituire una stringa json credo
   getarchive(): Observable<Array<Book>>{

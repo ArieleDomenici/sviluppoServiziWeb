@@ -23,28 +23,6 @@ import { Book } from '../book';
 export class SearchBookComponent implements OnInit {
   inputedBook: string = "";
   receivedArchive : Book[] = [];
-  /*getString(): void {
-    this.aas.getString().subscribe(x => this.receivedArchive = x);
-    console.log(this.receivedArchive);
-  }*/
-  searchBook(bookName : string){
-    console.log(this.receivedArchive)
-    this.aas.sequence.subscribe({
-      next(x) {
-        console.log(x);
-      },
-      error(err) {
-        console.error('something wrong occurred: ' + err);
-      },
-      complete() {
-        console.log('done');
-      },
-    })
-    this.inputedBook = bookName;
-    console.log(this.receivedArchive);
-    //setTimeout(()=>{console.log(this.receivedArchive);},3000);
-    
-  }
   getArchive(): void {
     this.aas.getarchive()
       .subscribe(
@@ -53,7 +31,6 @@ export class SearchBookComponent implements OnInit {
     console.log(this.receivedArchive);
   }
   constructor(private aas: ArchiveAccessService) { }
-  
   ngOnInit() {
   }
 }
