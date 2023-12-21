@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Book } from './book';
 import { Observable, Subscriber, Observer, of } from 'rxjs';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 
 @Injectable({
@@ -31,13 +32,9 @@ export class ArchiveAccessService {
   sequence = new Observable(this.sequenceSubscriber);
   //questo dovrà essere il metodo per andare a prendere l'array sul server
   //dovrebbe restituire una stringa json credo
-  getarchive(): void{
-    this.sequence.subscribe({
-      next(num) { return num; 
-      },
-      complete() { console.log('Finished sequence'); 
-    }
-    });
+  getarchive(): Observable<Array<Book>>{
+    const booksArchive = of(this.books);
+    return booksArchive;
   }
   //questo dovrà essere il metodo per caricare il nuovo array coi cambiamenti
   //non so cosa dovrebbe passargli penso di nuovo una stringa json?
