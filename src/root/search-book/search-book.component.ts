@@ -22,6 +22,7 @@ import { Book } from '../book';
 })
 export class SearchBookComponent implements OnInit {
   inputedBook: string = "";
+  numberBooksFound: number = 0;
   receivedArchive : Book[] = [];
   getArchive(): void {
     this.aas.getarchive()
@@ -29,6 +30,8 @@ export class SearchBookComponent implements OnInit {
         x => this.receivedArchive = x
       );
     console.log(this.receivedArchive);
+    this.numberBooksFound = this.receivedArchive.filter(el => el.titolo == this.inputedBook).length;
+    console.log(this.numberBooksFound);
   }
   constructor(private aas: ArchiveAccessService) { }
   ngOnInit() {

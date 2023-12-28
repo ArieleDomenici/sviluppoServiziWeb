@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class FoundBookComponent implements OnInit {
   @Input() inputedBook : string = "";
+  @Input() numberBooksFound : number = 0;
   constructor() { }
 
   ngOnInit() {
