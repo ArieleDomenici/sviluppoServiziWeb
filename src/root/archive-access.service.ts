@@ -11,7 +11,7 @@ export class ArchiveAccessService {
   books: Array<Book> = [
     new Book('1', 'Dante Alighieri', 'La Divina Commedia', ''),
     new Book('2', 'Alessandro Manzoni', 'I Promessi Sposi', ''),
-    new Book('3', 'Il Principe', 'Nicolò Machiavelli', ''),
+    new Book('3', 'Nicolò Machiavelli', 'Il Principe', ''),
   ]
   constructor() { }
   //questo dovrà essere il metodo per andare a prendere l'array sul server

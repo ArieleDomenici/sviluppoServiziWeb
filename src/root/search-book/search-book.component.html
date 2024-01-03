@@ -1,6 +1,9 @@
-
 <div>
   <p>search-book works!</p>
-  <input type="text" [(ngModel)]="inputedBook" (keyup)="getArchive()"/>
-  <app-found-book [inputedBook] = "inputedBook" [numberBooksFound] = "numberBooksFound"></app-found-book><br>
+  <input type="text" [(ngModel)]="inputedBook" (keyup)="getArchive()" />
+  <app-found-book
+    [inputedBook]="inputedBook"
+    [numberBooksFound]="numberBooksFound"
+  ></app-found-book
+  ><br />
 </div>
