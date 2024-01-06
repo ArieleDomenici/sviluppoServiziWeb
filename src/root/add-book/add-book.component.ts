@@ -27,7 +27,8 @@ export class AddBookComponent implements OnInit {
   });*/
 
   onClick(){
-    this.archiveAccessService.postarchive(this.inputedPosition,this.inputedAuthor,this.inputedTitle);
+    let book = new Book(this.inputedPosition,this.inputedAuthor,this.inputedTitle, "");
+    this.archiveAccessService.postarchive(book);
   }
 
   onSubmit(position: string, title: string, author: string) {

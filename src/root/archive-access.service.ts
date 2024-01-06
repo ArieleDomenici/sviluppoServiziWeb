@@ -22,9 +22,9 @@ export class ArchiveAccessService {
   }
   //questo dovrà essere il metodo per caricare il nuovo array coi cambiamenti
   //non so cosa dovrebbe passargli penso di nuovo una stringa json?
-  postarchive(position: string, author: string, title: string) {
-    this.books.push(new Book(position, author, title, ''));
-    console.log(this.books);
+  postarchive(book: Book) {
+    this.getarchive().subscribe((x)=>(this.books.push(book)));
+    console.log(this.books)
   }
   cercaLibro(autore: string, titolo: string) {
     console.log(`Autore e titolo cercati sono: autore: ${autore}, titolo: ${titolo}.`);
