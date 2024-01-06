@@ -1,5 +1,8 @@
-<p *ngIf="inputedBook != ''">
-found-book works!
-{{inputedBook}}
-{{numberBooksFound}}
-</p>
+<div *ngIf="inputedBook != ''">
+  <div *ngIf="numberBooksFound == 1; else elseBlock">libro trovato</div>
+  <ng-template #elseBlock>
+    found-book works!
+    {{ inputedBook }}
+    {{ numberBooksFound }}
+  </ng-template>
+</div>
