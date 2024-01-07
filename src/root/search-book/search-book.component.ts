@@ -18,6 +18,10 @@ export class SearchBookComponent implements OnInit {
   inputedBook: string = '';
   numberBooksFound: number = 0;
   receivedArchive: Book[] = [];
+  titoloLibro: string = "";
+  autoreLibro: string = "";
+  posizioneLibro: string = "";
+  bookFound: Array<Book> = [];
   getArchive(): void {
     this.aas.getarchive().subscribe((x) => (this.receivedArchive = x));
     console.log(this.receivedArchive);
@@ -25,7 +29,9 @@ export class SearchBookComponent implements OnInit {
     this.numberBooksFound = this.receivedArchive.filter(
       (el) => regex.test(el.titolo)
     ).length;
-    console.log(this.numberBooksFound);
+    if (this.numberBooksFound == 1){
+      this.bookFound = this.receivedArchive.filter((el) => regex.test(el.titolo))
+    }
   }
   constructor(private aas: ArchiveAccessService) {}
   ngOnInit() {}
