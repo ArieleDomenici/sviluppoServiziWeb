@@ -1,5 +1,8 @@
 <div *ngIf="inputedBook != ''">
-  <div *ngIf="numberBooksFound == 1; else elseBlock"><p>{{ titoloLibro }}</p></div>
+  <div *ngIf="numberBooksFound == 1; else elseBlock"><p>{{ titoloLibro }} {{ autoreLibro }} {{posizioneLibro}}</p>
+    <input type="text" [(ngModel)]="inputedUser"/>
+    <button type="submit" (click)="prestito()">Inserisci</button>
+  </div>
   <ng-template #elseBlock>
     libri trovati:
     {{ numberBooksFound }}

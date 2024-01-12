@@ -12,8 +12,10 @@ import { AddBookComponent } from './add-book/add-book.component';
 })
 export class RootComponent implements OnInit {
   title: string = 'Angular ' + VERSION.major;
+  //valori booleani per gestire cosa deve mostrare la view
   showRicerca = false;
   showInserisci = false;
+  //metodi per cambiare i valori alla pressione dei vari pulsanti e cambiare cosa viene visualizzato
   onRicercaPressed(){
     this.showRicerca = true;
   }
