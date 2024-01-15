@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Book } from './book';
 import { Observable, Subscriber, Observer, of } from 'rxjs';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
+import { ajax } from 'rxjs/ajax';
 
 
 @Injectable({
@@ -41,15 +42,7 @@ export class ArchiveAccessService {
     console.log(`Autore e titolo cercati sono: autore: ${autore}, titolo: ${titolo}.`);
   }
   getFromServer(){
-    fetch(this.URL)
-    .then(
-      (response) => response.json(), // parsing per avere la stringa
-      (error) => alert(error)
-      )
-      .then((data) => {
-        console.log(data);
-        const db = JSON.parse(data); // parsing per avere l'array
-        console.log(db);
-      });
+    const obs = ajax(this.URL);
+    return obs;
     }
 }
