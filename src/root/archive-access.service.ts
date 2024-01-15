@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Book } from './book';
 import { Observable, Subscriber, Observer, of } from 'rxjs';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
-import { ajax } from 'rxjs/ajax';
+import { ajax, AjaxResponse } from 'rxjs/ajax';
 
 
 @Injectable({
@@ -23,15 +23,15 @@ export class ArchiveAccessService {
   //questo dovrà essere il metodo per andare a prendere l'array sul server
   //dovrebbe restituire una stringa json credo
   //al momento funziona usando of che genera un observable e poi lo restituisce
-  getarchive(): Observable<Array<Book>>{
-    const booksArchive = of(this.books);
-    return booksArchive;
+  getArchive(){
+    const obs = ajax(this.URL);
+    return obs; 
   }
   //questo dovrà essere il metodo per caricare il nuovo array coi cambiamenti
   //non so cosa dovrebbe passargli penso di nuovo una stringa json?
   //al momento funziona facendo un subscribe a getarchive e poi con la next esegue un push del nuovo book che riceve come argomento dentro l'array che riceve dall'observable
   addBookToArchive(book: Book) {
-    this.getarchive().subscribe((x)=>(x.push(book)));
+    //this.getArchive().subscribe((x)=>(x.push(book)));
     console.log(this.books)
   }
   postArchive(archive: Array<Book>){
@@ -41,8 +41,4 @@ export class ArchiveAccessService {
   cercaLibro(autore: string, titolo: string) {
     console.log(`Autore e titolo cercati sono: autore: ${autore}, titolo: ${titolo}.`);
   }
-  getFromServer(){
-    const obs = ajax(this.URL);
-    return obs;
-    }
 }

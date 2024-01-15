@@ -25,10 +25,10 @@ export class SearchBookComponent implements OnInit {
   //questo sarà pieno solo quando viene trovato un singolo libro nella ricerca
   bookFound: Array<Book> = [];
   //metodo che viene chiamato ogni volta che viene inserito un nuovo carattere nella casella di ricerca. scarica l'archivio fa una ricerca e da il numero di libri trovati o il singolo libro se è uno solo quello trovato. forse ha bisogno di un pò di refactoring fa un pò troppe cose. ha anche bisogno di un cambio di nome visto che getarchive esiste già nel service.
-  getArchive(): void {
-    this.aas.getarchive().subscribe((x) => (this.receivedArchive = x));
-    this.aas.getFromServer().subscribe((x) => (console.log(x.response)));
-    console.log(this.receivedArchive);
+  cercaLibro(): void {
+    let responseJson;
+    this.aas.getArchive().subscribe((x) => (console.log(typeof x.response)));
+    //console.log(responseJson);
     let regex = new RegExp(this.inputedBook, "i");
     this.numberBooksFound = this.receivedArchive.filter(
       (el) => regex.test(el.titolo)
