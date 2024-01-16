@@ -18,7 +18,7 @@ export class SearchBookComponent implements OnInit {
   //testo che viene scritto nella casella di ricerca
   inputedBook: string = '';
   numberBooksFound: number = 0;
-  receivedArchive: Book[] = [];
+  receivedArchive: any;
   titoloLibro: string = '';
   autoreLibro: string = '';
   posizioneLibro: string = '';
@@ -26,19 +26,22 @@ export class SearchBookComponent implements OnInit {
   bookFound: Array<Book> = [];
   //metodo che viene chiamato ogni volta che viene inserito un nuovo carattere nella casella di ricerca. scarica l'archivio fa una ricerca e da il numero di libri trovati o il singolo libro se è uno solo quello trovato. forse ha bisogno di un pò di refactoring fa un pò troppe cose. ha anche bisogno di un cambio di nome visto che getarchive esiste già nel service.
   cercaLibro(): void {
-    let responseJson;
-    this.aas.getArchive().subscribe((x) => (console.log(typeof x.response)));
+    //let responseJson;
+    //this.aas.getArchive().subscribe((x) => (responseJson = x.response));
     //console.log(responseJson);
-    let regex = new RegExp(this.inputedBook, "i");
+    this.aas.getArchive().subscribe((x) => console.log(x[0].titolo));
+    //this.receivedArchive = this.aas.getArchive();
+    //console.log(this.receivedArchive[0].titolo);
+    /*let regex = new RegExp(this.inputedBook, "i");
     this.numberBooksFound = this.receivedArchive.filter(
-      (el) => regex.test(el.titolo)
+      (el: any) => regex.test(el.titolo)
     ).length;
     if (this.numberBooksFound == 1){
-      this.bookFound = this.receivedArchive.filter((el) => regex.test(el.titolo))
+      this.bookFound = this.receivedArchive.filter((el: any) => regex.test(el.titolo))
       this.autoreLibro = this.bookFound[0].autore;
       this.titoloLibro = this.bookFound[0].titolo;
-      this.posizioneLibro = this.bookFound[0].id;
-    }
+      //this.posizioneLibro = this.bookFound[0].id;
+    }*/
   }
   constructor(private aas: ArchiveAccessService) {}
   ngOnInit() {}
