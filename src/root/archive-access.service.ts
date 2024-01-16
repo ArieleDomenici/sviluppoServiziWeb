@@ -21,9 +21,9 @@ export class ArchiveAccessService {
     new Book('3', 'Nicolò Machiavelli', 'Il Principe', ''),
   ];
   constructor() {}
-  //questo dovrà essere il metodo per andare a prendere l'array sul server
-  //dovrebbe restituire una stringa json credo
-  //al momento funziona usando of che genera un observable e poi lo restituisce
+  /*codice per andare a prendere l'array dal server. al momento funziona restituendo
+  un observable che fa una fetch con una serie di then e parsano il json e poi
+  resti */
   getArchive() {
     //const obs: Observable<AjaxResponse<any>> = ajax(this.urlToGetArchive);
     //return obs;
