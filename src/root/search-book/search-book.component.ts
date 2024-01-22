@@ -32,11 +32,11 @@ export class SearchBookComponent implements OnInit {
       this.receivedArchive = x;
       let regex = new RegExp(this.inputedBook, 'i');
       this.numberBooksFound = this.receivedArchive.filter((el: any) =>
-        regex.test(el.titolo)
+        regex.test(el.titolo+el.autore)
       ).length;
       if (this.numberBooksFound == 1) {
         this.bookFound = this.receivedArchive.filter((el: any) =>
-          regex.test(el.titolo)
+          regex.test(el.titolo+el.autore)
         );
         this.autoreLibro = this.bookFound[0].autore;
         this.titoloLibro = this.bookFound[0].titolo;
