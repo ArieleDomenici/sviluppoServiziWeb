@@ -36,6 +36,10 @@ export class SearchBookComponent implements OnInit {
     console.log(this.receivedArchive);
   }
   cercaLibro(): void {
+    this.aas.getArchive().subscribe(x=>{
+      this.receivedArchive = x[0].titolo;
+      this.autoreLibro = x[0].autore;
+    });
     /*let responseJson;
     this.aas.getArchive().subscribe((x) => (responseJson = x.response));
     console.log(responseJson);
@@ -53,7 +57,6 @@ export class SearchBookComponent implements OnInit {
     });
     */
   
-    this.aas.getArchive().subscribe((x)=>(this.receivedArchive = x[0].titolo));
     /*
     console.log(this.receivedArchive[0].titolo);
     let regex = new RegExp(this.inputedBook, "i");
