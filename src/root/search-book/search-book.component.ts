@@ -25,13 +25,24 @@ export class SearchBookComponent implements OnInit {
   //questo sarà pieno solo quando viene trovato un singolo libro nella ricerca
   bookFound: Array<Book> = [];
   /*metodo che viene chiamato ogni volta che viene inserito un nuovo carattere nella casella di ricerca. scarica l'archivio fa una ricerca e da il numero di libri trovati o il singolo libro se è uno solo quello trovato. forse ha bisogno di un pò di refactoring fa un pò troppe cose.*/
+  trovaLibro(arr: Array<any>): void{
+    this.receivedArchive = arr;
+  }
+  onButtonPress(){
+    this.receivedArchive = this.cercaLibro();
+    console.log(this.receivedArchive);
+  }
+  logger(){
+    console.log(this.receivedArchive);
+  }
   cercaLibro(): void {
     /*let responseJson;
     this.aas.getArchive().subscribe((x) => (responseJson = x.response));
-    console.log(responseJson);*/
+    console.log(responseJson);
     this.aas.getArchive().subscribe({
       next(x) {
         console.log('got value ' + x[0].titolo);
+        return x;
       },
       error(err) {
         console.error('something wrong occurred: ' + err);
@@ -40,7 +51,10 @@ export class SearchBookComponent implements OnInit {
         console.log('done');
       },
     });
-    /*this.receivedArchive = this.aas.getArchive();
+    */
+  
+    this.aas.getArchive().subscribe((x)=>(this.receivedArchive = x[0].titolo));
+    /*
     console.log(this.receivedArchive[0].titolo);
     let regex = new RegExp(this.inputedBook, "i");
     this.numberBooksFound = this.receivedArchive.filter(

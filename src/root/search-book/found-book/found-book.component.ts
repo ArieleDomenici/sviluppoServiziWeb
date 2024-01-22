@@ -20,6 +20,7 @@ export class FoundBookComponent implements OnInit {
   @Input() autoreLibro?: string;
   @Input() titoloLibro?: string;
   @Input() posizioneLibro?: string;
+  @Input() receivedArchive?: Array<any>;
   prestito(){
   }
   addUtente(book: any){
