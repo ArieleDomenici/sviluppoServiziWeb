@@ -44,8 +44,10 @@ export class ArchiveAccessService {
   //non so cosa dovrebbe passargli penso di nuovo una stringa json?
   //al momento funziona facendo un subscribe a getarchive e poi con la next esegue un push del nuovo book che riceve come argomento dentro l'array che riceve dall'observable
   addBookToArchive(book: Book) {
-    //this.getArchive().subscribe((x)=>(x.push(book)));
-    console.log(this.books);
+    this.getArchive().subscribe((x) => {
+      x.push(book);
+      console.log(x);
+    });
   }
   postArchive(archive: Array<Book>) {
     this.books = archive;
