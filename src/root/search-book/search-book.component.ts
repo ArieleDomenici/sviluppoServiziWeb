@@ -40,6 +40,7 @@ export class SearchBookComponent implements OnInit {
         );
         this.autoreLibro = this.bookFound[0].autore;
         this.titoloLibro = this.bookFound[0].titolo;
+        this.posizioneLibro = this.bookFound[0].id;
       }
     });
     /*let responseJson;
