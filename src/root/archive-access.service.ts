@@ -56,12 +56,7 @@ export class ArchiveAccessService {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
-        body: `{
-           "id": 78912,
-           "autore": "Jason Sweet",
-           "titolo": "TEST",
-           "utente": ""
-          }`,
+        body: JSON.stringify(book),
       }).then((response) => subscriber.next(response));
     });
     return obs;
