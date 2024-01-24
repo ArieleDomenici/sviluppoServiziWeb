@@ -62,7 +62,7 @@ export class ArchiveAccessService {
            "titolo": "TEST",
            "utente": ""
           }`,
-      });
+      }).then((response) => subscriber.next(response));
     });
     return obs;
     /*this.getArchive().subscribe((x) => {
