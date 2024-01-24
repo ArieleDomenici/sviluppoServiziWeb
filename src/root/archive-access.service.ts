@@ -14,7 +14,7 @@ export class ArchiveAccessService {
   basePOST =
     'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint';
   op = 'get';
-  opPOST = 'post';
+  opPOST = 'set';
   key = 'ae057acf';
   urlToGetArchive = this.base + '/' + this.op + '?key=' + this.key;
   urlToPostArchive = this.base + '/' + this.opPOST + '?key=' + this.key;
