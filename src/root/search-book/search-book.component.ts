@@ -22,6 +22,7 @@ export class SearchBookComponent implements OnInit {
   titoloLibro: string = '';
   autoreLibro: string = '';
   posizioneLibro: string = '';
+  utenteLibro: string = '';
   //questo sarà pieno solo quando viene trovato un singolo libro nella ricerca
   bookFound: Array<Book> = [];
   /*metodo che viene chiamato ogni volta che viene inserito un nuovo carattere nella casella di ricerca. scarica l'archivio fa una ricerca e da il numero di libri trovati o il singolo libro se è uno solo quello trovato. forse ha bisogno di un pò di refactoring fa un pò troppe cose.*/
@@ -41,6 +42,7 @@ export class SearchBookComponent implements OnInit {
         this.autoreLibro = this.bookFound[0].autore;
         this.titoloLibro = this.bookFound[0].titolo;
         this.posizioneLibro = this.bookFound[0].id;
+        this.utenteLibro = this.bookFound[0].utente;
       }
     });
     /*let responseJson;
