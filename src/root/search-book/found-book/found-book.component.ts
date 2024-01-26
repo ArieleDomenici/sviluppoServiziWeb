@@ -23,6 +23,7 @@ export class FoundBookComponent implements OnInit {
   @Input() receivedArchive?: Array<any>;
   @Input() utenteLibro?: string = '';
   prestito(){
+    
   }
   addUtente(book: any){
     if(book.titolo==this.titoloLibro){

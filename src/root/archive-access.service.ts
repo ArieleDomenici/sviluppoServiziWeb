@@ -48,7 +48,7 @@ export class ArchiveAccessService {
   //questo dovrà essere il metodo per caricare il nuovo array coi cambiamenti
   //non so cosa dovrebbe passargli penso di nuovo una stringa json?
   //al momento funziona facendo un subscribe a getarchive e poi con la next esegue un push del nuovo book che riceve come argomento dentro l'array che riceve dall'observable
-  addBookToArchive(book: Book) {
+  addBookToArchive(arrayofBooks: Book[]) {
     const obs: Observable<any> = new Observable((subscriber) => {
       fetch(this.urlToPostArchive, {
         method: 'POST',
@@ -56,21 +56,12 @@ export class ArchiveAccessService {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(book),
+        body: JSON.stringify(arrayofBooks),
       }).then((response) => subscriber.next(response));
     });
     return obs;
     /*this.getArchive().subscribe((x) => {
       x.push(book);
     });*/
-  }
-  postArchive(archive: Array<Book>) {
-    this.books = archive;
-  }
-  //non mi ricordo cos'è o perchè ho scritto questa cosa
-  cercaLibro(autore: string, titolo: string) {
-    console.log(
-      `Autore e titolo cercati sono: autore: ${autore}, titolo: ${titolo}.`
-    );
   }
 }
