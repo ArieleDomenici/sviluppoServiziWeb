@@ -1,7 +1,10 @@
-<div *ngIf="inputedBook != ''">
-  <div *ngIf="numberBooksFound == 1; else elseBlock"><p>{{ titoloLibro }} {{ autoreLibro }} {{posizioneLibro}}</p>
-    <input type="text" [(ngModel)]="inputedUser"/>
-    <button type="submit" (click)="prestito()">Prendi in Prestito</button>
+<div *ngIf="inputedBook != '' ">
+  <div *ngIf="numberBooksFound == 1; else elseBlock">
+    <p>{{ titoloLibro }} {{ autoreLibro }} {{ posizioneLibro }}</p>
+    <div *ngIf="utenteLibro != '' ">
+      <input type="text" [(ngModel)]="inputedUser" />
+      <button type="submit" (click)="prestito()">Prendi in Prestito</button>
+    </div>
   </div>
   <ng-template #elseBlock>
     libri trovati:
