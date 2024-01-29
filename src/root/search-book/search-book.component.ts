@@ -47,19 +47,21 @@ export class SearchBookComponent implements OnInit {
       }
     });
   }
-  prestito() {
-    //this.bookFound[0].utente = this.inputedUser;
+  prestito(user: string) {
+    this.bookFound[0].utente = user;
+    this.inputedUser = user
     //qui devo usare map
-    //this.aas.addBookToArchive(this.receivedArchive?.map(this.addUtente)).subscribe();
+    console.log(this.titoloLibro);
+    this.aas.addBookToArchive(this.receivedArchive?.map(this.addUtente, this)).subscribe();
   }
-  /*addUtente(book: any){
+  addUtente(book: any){
     if(book.titolo==this.titoloLibro){
       return book.utente=this.inputedUser;
     }
     else{
       return book;
     }
-  }*/
+  }
 
 
   receiveUser(user: string) {
