@@ -33,11 +33,11 @@ export class SearchBookComponent implements OnInit {
       this.receivedArchive = x;
       let regex = new RegExp(this.inputedBook, 'i');
       this.numberBooksFound = this.receivedArchive.filter((el: any) =>
-        regex.test(el.titolo+el.autore)
+        regex.test(el.titolo + el.autore)
       ).length;
       if (this.numberBooksFound == 1) {
         this.bookFound = this.receivedArchive.filter((el: any) =>
-          regex.test(el.titolo+el.autore)
+          regex.test(el.titolo + el.autore)
         );
         this.autoreLibro = this.bookFound[0].autore;
         this.titoloLibro = this.bookFound[0].titolo;
@@ -45,36 +45,27 @@ export class SearchBookComponent implements OnInit {
         this.utenteLibro = this.bookFound[0].utente;
       }
     });
-    /*let responseJson;
-    this.aas.getArchive().subscribe((x) => (responseJson = x.response));
-    console.log(responseJson);
-    this.aas.getArchive().subscribe({
-      next(x) {
-        console.log('got value ' + x[0].titolo);
-        return x;
-      },
-      error(err) {
-        console.error('something wrong occurred: ' + err);
-      },
-      complete() {
-        console.log('done');
-      },
-    });
-    */
-
-    /*
-    console.log(this.receivedArchive[0].titolo);
-    let regex = new RegExp(this.inputedBook, "i");
-    this.numberBooksFound = this.receivedArchive.filter(
-      (el: any) => regex.test(el.titolo)
-    ).length;
-    if (this.numberBooksFound == 1){
-      this.bookFound = this.receivedArchive.filter((el: any) => regex.test(el.titolo))
-      this.autoreLibro = this.bookFound[0].autore;
-      this.titoloLibro = this.bookFound[0].titolo;
-      //this.posizioneLibro = this.bookFound[0].id;
-    }*/
   }
+  prestito() {
+    //this.bookFound[0].utente = this.inputedUser;
+    //qui devo usare map
+    //this.aas.addBookToArchive(this.receivedArchive?.map(this.addUtente)).subscribe();
+  }
+  /*addUtente(book: any){
+    if(book.titolo==this.titoloLibro){
+      return book.utente=this.inputedUser;
+    }
+    else{
+      return book;
+    }
+  }*/
+
+  items = ['item1', 'item2', 'item3', 'item4'];
+
+  addItem(newItem: string) {
+    this.items.push(newItem);
+  }
+
   constructor(private aas: ArchiveAccessService) {}
   ngOnInit() {}
 }

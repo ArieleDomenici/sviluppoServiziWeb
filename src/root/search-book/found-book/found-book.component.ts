@@ -1,40 +1,38 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-found-book',
   templateUrl: './found-book.component.html',
   styleUrls: ['./found-book.component.css'],
   standalone: true,
-  imports: [
-    CommonModule, FormsModule
-  ],
+  imports: [CommonModule, FormsModule],
 })
 export class FoundBookComponent implements OnInit {
-  @Input() inputedBook : string = '';
+  @Input() inputedBook: string = '';
   inputedUser = '';
-  @Input() numberBooksFound : number = 0;
+  @Input() numberBooksFound: number = 0;
   @Input() bookFound: Array<any> = [];
   @Input() autoreLibro?: string;
   @Input() titoloLibro?: string;
   @Input() posizioneLibro?: string;
   @Input() receivedArchive?: Array<any>;
   @Input() utenteLibro?: string = '';
-  prestito(){
-    
+  @Output() newItemEvent = new EventEmitter<string>();
+
+  addNewItem(value: string) {
+    this.newItemEvent.emit(value);
   }
-  addUtente(book: any){
-    if(book.titolo==this.titoloLibro){
-      return book.utente=this.inputedUser;
-    }
-    else{
+  addUtente(book: any) {
+    if (book.titolo == this.titoloLibro) {
+      return (book.utente = this.inputedUser);
+    } else {
       return book;
     }
   }
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

@@ -1,9 +1,12 @@
-<div *ngIf="inputedBook != '' ">
+<div *ngIf="inputedBook != ''">
   <div *ngIf="numberBooksFound == 1; else elseBlock">
     <p>{{ titoloLibro }} {{ autoreLibro }} {{ posizioneLibro }}</p>
-    <div *ngIf="utenteLibro != '' ">
-      <input type="text" [(ngModel)]="inputedUser" />
-      <button type="submit" (click)="prestito()">Prendi in Prestito</button>
+    <div *ngIf="utenteLibro == ''">
+      <label for="userName-input">Prendi in prestito:</label>
+      <input type="text" id="userName-input" #inputedUser />
+      <button type="button" (click)="addNewItem(inputedUser.value)">
+        Add to parent's list
+      </button>
     </div>
   </div>
   <ng-template #elseBlock>
