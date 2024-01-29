@@ -1,9 +1,7 @@
 <div>
   <p>search-book works!</p>
   <input type="text" [(ngModel)]="inputedBook" (keyup)="cercaLibro()" />
-  <ul>
-    <li *ngFor="let item of items">{{item}}</li>
-  </ul>
+  <p>{{inputedUser}}</p>
   <app-found-book
     [inputedBook]="inputedBook"
     [numberBooksFound]="numberBooksFound"
@@ -11,7 +9,7 @@
     [titoloLibro]="titoloLibro"
     [posizioneLibro]="posizioneLibro"
     [receivedArchive]="receivedArchive"
-    (newItemEvent)="addItem($event)"
+    (newItemEvent)="receiveUser($event)"
   ></app-found-book
   ><br />
 </div>

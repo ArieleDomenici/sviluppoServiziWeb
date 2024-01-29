@@ -16,6 +16,7 @@ import { Book } from '../book';
 })
 export class SearchBookComponent implements OnInit {
   //testo che viene scritto nella casella di ricerca
+  inputedUser: string = '';
   inputedBook: string = '';
   numberBooksFound: number = 0;
   receivedArchive: any;
@@ -60,10 +61,9 @@ export class SearchBookComponent implements OnInit {
     }
   }*/
 
-  items = ['item1', 'item2', 'item3', 'item4'];
 
-  addItem(newItem: string) {
-    this.items.push(newItem);
+  receiveUser(user: string) {
+    this.inputedUser = user;
   }
 
   constructor(private aas: ArchiveAccessService) {}

@@ -4,9 +4,7 @@
     <div *ngIf="utenteLibro == ''">
       <label for="userName-input">Prendi in prestito:</label>
       <input type="text" id="userName-input" #inputedUser />
-      <button type="button" (click)="addNewItem(inputedUser.value)">
-        Add to parent's list
-      </button>
+      <button type="button" (click)="emitUser(inputedUser.value)">prestito</button>
     </div>
   </div>
   <ng-template #elseBlock>
