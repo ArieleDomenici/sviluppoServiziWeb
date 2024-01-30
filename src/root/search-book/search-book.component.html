@@ -9,7 +9,9 @@
     [titoloLibro]="titoloLibro"
     [posizioneLibro]="posizioneLibro"
     [receivedArchive]="receivedArchive"
+    [isRented]="isRented"
     (newItemEvent)="prestito($event)"
+    (restituzioneEvent)="restituzione($event)"
   ></app-found-book
   ><br />
 </div>

@@ -24,6 +24,7 @@ export class SearchBookComponent implements OnInit {
   autoreLibro: string = '';
   posizioneLibro: string = '';
   utenteLibro: string = '';
+  isRented?: boolean;
   //questo sarà pieno solo quando viene trovato un singolo libro nella ricerca
   bookFound: Array<Book> = [];
   /*metodo che viene chiamato ogni volta che viene inserito un nuovo carattere nella casella di ricerca. scarica l'archivio fa una ricerca e da il numero di libri trovati o il singolo libro se è uno solo quello trovato. forse ha bisogno di un pò di refactoring fa un pò troppe cose.*/
@@ -44,27 +45,44 @@ export class SearchBookComponent implements OnInit {
         this.titoloLibro = this.bookFound[0].titolo;
         this.posizioneLibro = this.bookFound[0].id;
         this.utenteLibro = this.bookFound[0].utente;
+        if(this.utenteLibro.length!=0){
+          this.isRented = true;
+        }
+        else{
+          this.isRented = false;
+        }
+        console.log(this.utenteLibro.length);
+        console.log(this.isRented);
       }
     });
   }
-  prestito(user: string) {
-    this.bookFound[0].utente = user;
-    this.inputedUser = user
+  restituzione(value: string) {
+    this.bookFound[0].utente = value;
+    this.inputedUser = value;
     //qui devo usare map
     console.log(this.titoloLibro);
-    this.aas.addBookToArchive(this.receivedArchive?.map(this.addUtente, this)).subscribe();
+    this.aas
+      .addBookToArchive(this.receivedArchive?.map(this.addUtente, this))
+      .subscribe();
   }
-  addUtente(book: any){
-    if(book.titolo==this.titoloLibro){
+  prestito(user: string) {
+    this.bookFound[0].utente = user;
+    this.inputedUser = user;
+    //qui devo usare map
+    console.log(this.titoloLibro);
+    this.aas
+      .addBookToArchive(this.receivedArchive?.map(this.addUtente, this))
+      .subscribe();
+  }
+  addUtente(book: any) {
+    if (book.titolo == this.titoloLibro) {
       let updatedBook = book;
-      updatedBook.utente=this.inputedUser;
+      updatedBook.utente = this.inputedUser;
       return updatedBook;
-    }
-    else{
+    } else {
       return book;
     }
   }
-
 
   receiveUser(user: string) {
     this.inputedUser = user;

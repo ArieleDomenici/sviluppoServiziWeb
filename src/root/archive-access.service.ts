@@ -39,7 +39,6 @@ export class ArchiveAccessService {
           (error) => alert(error)
         )
         .then((data) => {
-          console.log(data);
           subscriber.next(JSON.parse(data)); // parsing per avere l'array
         });
     });

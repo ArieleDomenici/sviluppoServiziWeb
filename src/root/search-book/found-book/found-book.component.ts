@@ -18,11 +18,16 @@ export class FoundBookComponent implements OnInit {
   @Input() titoloLibro?: string;
   @Input() posizioneLibro?: string;
   @Input() receivedArchive?: Array<any>;
-  @Input() utenteLibro?: string = '';
+  @Input() utenteLibro?: string;
+  @Input() isRented?: boolean;
   @Output() newItemEvent = new EventEmitter<string>();
+  @Output() restituzioneEvent = new EventEmitter<string>();
 
   emitUser(value: string) {
     this.newItemEvent.emit(value);
+  }
+  emitRestituzione(value: string){
+    this.restituzioneEvent.emit(value);
   }
   /*addUtente(book: any) {
     if (book.titolo == this.titoloLibro) {
