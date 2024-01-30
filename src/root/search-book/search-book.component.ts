@@ -56,7 +56,9 @@ export class SearchBookComponent implements OnInit {
   }
   addUtente(book: any){
     if(book.titolo==this.titoloLibro){
-      return book.utente=this.inputedUser;
+      let updatedBook = book;
+      updatedBook.utente=this.inputedUser;
+      return updatedBook;
     }
     else{
       return book;
