@@ -1,7 +1,6 @@
 <div>
-  <p>search-book works!</p>
+  <p>Ricerca Libro</p>
   <input type="text" [(ngModel)]="inputedBook" (keyup)="cercaLibro()" />
-  <p>{{inputedUser}}</p>
   <app-found-book
     [inputedBook]="inputedBook"
     [numberBooksFound]="numberBooksFound"

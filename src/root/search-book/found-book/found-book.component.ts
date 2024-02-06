@@ -26,16 +26,10 @@ export class FoundBookComponent implements OnInit {
   emitUser(value: string) {
     this.newItemEvent.emit(value);
   }
-  emitRestituzione(value: string){
+  emitRestituzione(value: string) {
     this.restituzioneEvent.emit(value);
   }
-  /*addUtente(book: any) {
-    if (book.titolo == this.titoloLibro) {
-      return (book.utente = this.inputedUser);
-    } else {
-      return book;
-    }
-  }*/
+
   constructor() {}
 
   ngOnInit() {}

@@ -11,8 +11,6 @@ import { Book } from '../book';
   templateUrl: './search-book.component.html',
   styleUrls: ['./search-book.component.css'],
   imports: [CommonModule, FormsModule, FoundBookComponent],
-  //sembra che anche senza providers vada uguale quindi a che serve?
-  //providers: [ArchiveAccessService],
 })
 export class SearchBookComponent implements OnInit {
   //testo che viene scritto nella casella di ricerca
@@ -30,7 +28,6 @@ export class SearchBookComponent implements OnInit {
   /*metodo che viene chiamato ogni volta che viene inserito un nuovo carattere nella casella di ricerca. scarica l'archivio fa una ricerca e da il numero di libri trovati o il singolo libro se è uno solo quello trovato. forse ha bisogno di un pò di refactoring fa un pò troppe cose.*/
 
   cercaLibro(): void {
-    let regex = new RegExp(this.inputedBook, 'i');
     this.aas.getArchive().subscribe((x) => {
       this.receivedArchive = x;
       let regex = new RegExp(this.inputedBook, 'i');
@@ -45,22 +42,17 @@ export class SearchBookComponent implements OnInit {
         this.titoloLibro = this.bookFound[0].titolo;
         this.posizioneLibro = this.bookFound[0].id;
         this.utenteLibro = this.bookFound[0].utente;
-        if(this.utenteLibro.length!=0){
+        if (this.utenteLibro.length != 0) {
           this.isRented = true;
-        }
-        else{
+        } else {
           this.isRented = false;
         }
-        console.log(this.utenteLibro.length);
-        console.log(this.isRented);
       }
     });
   }
   restituzione(value: string) {
     this.bookFound[0].utente = value;
     this.inputedUser = value;
-    //qui devo usare map
-    console.log(this.titoloLibro);
     this.aas
       .addBookToArchive(this.receivedArchive?.map(this.addUtente, this))
       .subscribe();
@@ -68,8 +60,6 @@ export class SearchBookComponent implements OnInit {
   prestito(user: string) {
     this.bookFound[0].utente = user;
     this.inputedUser = user;
-    //qui devo usare map
-    console.log(this.titoloLibro);
     this.aas
       .addBookToArchive(this.receivedArchive?.map(this.addUtente, this))
       .subscribe();

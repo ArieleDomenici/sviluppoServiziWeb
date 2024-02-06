@@ -1,14 +1,16 @@
-<h3>{{title}}</h3>
-<p>
-root works!
-</p>
-<button (click)="onRicercaPressed()" *ngIf="!showRicerca && !showInserisci">Ricerca</button>
+<h3>{{ title }}</h3>
+
+<button (click)="onRicercaPressed()" *ngIf="!showRicerca && !showInserisci">
+  Ricerca
+</button>
 <div *ngIf="showRicerca">
-  <app-search-book ></app-search-book>
+  <app-search-book></app-search-book>
   <button (click)="pressRicercaEsci()">Esci</button>
 </div>
 
-<button (click)="onInserisciPressed()" *ngIf="!showInserisci && !showRicerca">Inserimento</button>
+<button (click)="onInserisciPressed()" *ngIf="!showInserisci && !showRicerca">
+  Inserimento
+</button>
 <div *ngIf="showInserisci">
   <app-add-book></app-add-book>
   <button (click)="pressInserisciEsci()">Esci</button>

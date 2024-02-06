@@ -1,5 +1,5 @@
 import { Component, OnInit, VERSION } from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { SearchBookComponent } from './search-book/search-book.component';
 import { AddBookComponent } from './add-book/add-book.component';
 
@@ -11,26 +11,24 @@ import { AddBookComponent } from './add-book/add-book.component';
   imports: [CommonModule, SearchBookComponent, AddBookComponent],
 })
 export class RootComponent implements OnInit {
-  title: string = 'Angular ' + VERSION.major;
+  title: string = 'Progetto Biblioteca';
   //valori booleani per gestire cosa deve mostrare la view
   showRicerca = false;
   showInserisci = false;
   //metodi per cambiare i valori alla pressione dei vari pulsanti e cambiare cosa viene visualizzato
-  onRicercaPressed(){
+  onRicercaPressed() {
     this.showRicerca = true;
   }
-  pressRicercaEsci(){
+  pressRicercaEsci() {
     this.showRicerca = false;
   }
-  onInserisciPressed(){
+  onInserisciPressed() {
     this.showInserisci = true;
   }
-  pressInserisciEsci(){
+  pressInserisciEsci() {
     this.showInserisci = false;
   }
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Book } from './book';
-import { Observable, Subscriber, Observer, of, interval } from 'rxjs';
-import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
+import { Observable } from 'rxjs';
 import { ajax, AjaxResponse, AjaxRequest, AjaxError } from 'rxjs/ajax';
-import { map, catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,35 +16,22 @@ export class ArchiveAccessService {
   key = 'ae057acf';
   urlToGetArchive = this.base + '/' + this.op + '?key=' + this.key;
   urlToPostArchive = this.base + '/' + this.opPOST + '?key=' + this.key;
-  //array di libri dichiarato dentro il service che poi andrà spostato sul database e gestito con le api rest
-  books: Array<Book> = [
-    new Book('1', 'Dante Alighieri', 'La Divina Commedia', ''),
-    new Book('2', 'Alessandro Manzoni', 'I Promessi Sposi', ''),
-    new Book('3', 'Nicolò Machiavelli', 'Il Principe', ''),
-  ];
 
   constructor() {}
-  /*codice per andare a prendere l'array dal server. al momento funziona restituendo
-  un observable che fa una fetch con una serie di then e parsano il json e poi
-  resti */
   getArchive() {
-    //const obs: Observable<AjaxResponse<any>> = ajax(this.urlToGetArchive);
-    //return obs;
     const obs: Observable<any> = new Observable((subscriber) => {
       fetch(this.urlToGetArchive)
         .then(
-          (response) => response.json(), // parsing per avere la stringa
+          (response) => response.json(),
           (error) => alert(error)
         )
         .then((data) => {
-          subscriber.next(JSON.parse(data)); // parsing per avere l'array
+          subscriber.next(JSON.parse(data));
         });
     });
     return obs;
   }
-  //questo dovrà essere il metodo per caricare il nuovo array coi cambiamenti
-  //non so cosa dovrebbe passargli penso di nuovo una stringa json?
-  //al momento funziona facendo un subscribe a getarchive e poi con la next esegue un push del nuovo book che riceve come argomento dentro l'array che riceve dall'observable
+
   addBookToArchive(arrayofBooks: Book[]) {
     const obs: Observable<any> = new Observable((subscriber) => {
       fetch(this.urlToPostArchive, {
@@ -59,8 +44,5 @@ export class ArchiveAccessService {
       }).then((response) => subscriber.next(response));
     });
     return obs;
-    /*this.getArchive().subscribe((x) => {
-      x.push(book);
-    });*/
   }
 }

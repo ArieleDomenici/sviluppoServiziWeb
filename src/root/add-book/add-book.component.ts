@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Observable, Subscriber } from 'rxjs';
 import { Book } from '../book';
 import { ArchiveAccessService } from '../archive-access.service';
-
 
 @Component({
   selector: 'app-add-book',
@@ -14,29 +12,25 @@ import { ArchiveAccessService } from '../archive-access.service';
   imports: [CommonModule, FormsModule],
 })
 export class AddBookComponent implements OnInit {
-  inputedPosition = '';
-  inputedTitle = '';
-  inputedAuthor = '';
+  inputedPosition: string = '';
+  inputedTitle: string = '';
+  inputedAuthor: string = '';
 
-/*  observable = new Observable((subscriber) => {
-    subscriber.next(new Book(this.inputedPosition, this.inputedAuthor, this.inputedTitle, ''));
-    setTimeout(() => {
-      subscriber.next(4);
-      subscriber.complete();
-    }, 1000);
-  });*/
-
-  onClick(){
-    let book = new Book(this.inputedPosition,this.inputedAuthor,this.inputedTitle, "");
-    this.archiveAccessService.getArchive().subscribe(arrayOfBooks => {
+  onClick() {
+    let book = new Book(
+      this.inputedPosition,
+      this.inputedAuthor,
+      this.inputedTitle,
+      ''
+    );
+    this.archiveAccessService.getArchive().subscribe((arrayOfBooks) => {
       arrayOfBooks.push(book);
-      this.archiveAccessService.addBookToArchive(arrayOfBooks).subscribe(x => console.log(x));
-    })
+      this.archiveAccessService
+        .addBookToArchive(arrayOfBooks)
+        .subscribe((x) => console.log(x));
+    });
   }
 
-  onSubmit(position: string, title: string, author: string) {
-    console.log(position + title + author);
-  }
   constructor(private archiveAccessService: ArchiveAccessService) {}
 
   ngOnInit() {}
